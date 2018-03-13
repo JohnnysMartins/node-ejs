@@ -8,7 +8,7 @@
     "url": "https://github.com/JohnnysMartins/node-ejs.git"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jasmine",
     "dev": "nodemon app.js"
   },
   "author": "Johnnys Martins",
@@ -19,5 +19,8 @@
     "express": "^4.16.3",
     "express-load": "^1.1.16",
     "mysql": "^2.15.0"
+  },
+  "devDependencies": {
+    "jasmine": "^3.1.0"
   }
 }
