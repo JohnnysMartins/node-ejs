@@ -1,17 +1,20 @@
 var http = require('http');
 
-var configuracao = {
-    hostname: 'localhost',
-    port: 3000,
-    path: '/produtos',
-    headers : {
-        'accept': 'application/json'
-    }
-};
-
 describe('ProdutosController', function(){
     it('listagem json', function(){
-        console.log("teste de verificacao de listagem json");
+        var configuracao = {
+            hostname: 'localhost',
+            port: 3000,
+            path: '/produtos',
+            headers : {
+                'accept': 'application/json'
+            }
+        };
+        http.get(configuracao, (res)=>{
+            if(res.statusCode == 200) console.log('status ta ok');
+            if(res.headers['content-type'] == 'application/json; charset=utf-8') console.log('content type ok');
+        });
+    
     });
 });
 
