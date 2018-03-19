@@ -1,20 +1,13 @@
-var http = require('http');
+var express = require('../config/express')();
+var http = require('supertest')(express);
 
-describe('ProdutosController', function(){
-    it('listagem json', function(){
-        var configuracao = {
-            hostname: 'localhost',
-            port: 3000,
-            path: '/produtos',
-            headers : {
-                'accept': 'application/json'
-            }
-        };
-        http.get(configuracao, (res)=>{
-            if(res.statusCode == 200) console.log('status ta ok');
-            if(res.headers['content-type'] == 'application/json; charset=utf-8') console.log('content type ok');
-        });
-    
+describe('#ProdutosController', function () {
+    it('listagem json', function (done) {
+        http.get('/produtos')
+            .set('accept', 'application/json')
+            .expect('content-type', /json/)
+            .expect(200, done);
+
     });
 });
 
